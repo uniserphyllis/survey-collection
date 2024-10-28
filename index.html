@@ -1,0 +1,161 @@
+<html lang="zh-Hant">
+    <head>
+      <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+      <div class="form-container cf-form">
+          <form id="questionnaire-form">
+            <div class="slide-container">
+              <div class="slide">
+                <h2> 1 分鐘品牌保護認知評估！ </h2>
+                <div class="radio-container">
+                  <input type="radio" id="match_1" name="num_students" value="yes">
+                  <label for="match_1"> 本人已閱讀並同意<a href="personaldatacollect.pdf">蒐集個人資料告知聲明</a></label>
+                </div>
+                <div style="height: 20px;"></div> <!-- 創造 20px 的空白行 -->
+                <iframe src="personaldatacollect.pdf" width="100%" height="70px"></iframe>
+                  <!--您的瀏覽器不支援 PDF 預覽，請下載 <a href="personaldatacollect.pdf">PDF 文件</a>-->
+                <div class="error-message"> 請選擇選項 </div>
+              </div>
+
+              <div class="slide">
+                <h2> 請問您在貴司擔任的角色為何？ </h2>
+                <div class="options-grid">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="role_1" name="role" value="Sales">
+                        <label for="role_1">行銷／業務人員</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="role_2" name="role" value="Branding">
+                        <label for="role_2">品牌人員</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="role_3" name="role" value="Buyer">
+                        <label for="role_3">採購人員</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="role_4" name="role" value="IT">
+                        <label for="role_4">IT 技術人員</label>
+                    </div>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="role_5" name="role" value="RD">
+                      <label for="role_5">RD 技術人員</label>
+                    </div>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="role_6" name="role" value="MIS">
+                      <label for="role_6">MIS 技術人員</label>
+                    </div>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="role_7" name="role" value="Manager">
+                      <label for="role_7">公司經營者／管理者</label>
+                    </div>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="language_other" name="languages[]" value="其他">
+                      <label for="language_other">其他</label>
+                      <input type="text" id="other_language_input" name="other_language" placeholder="請輸入" style="display: none; margin-left: 5px;">
+                    </div>
+              </div>
+                <div class="error-message"> 請選擇選項 </div>
+              </div>
+
+              <div class="slide">
+                <h2> 您是否有不知道該註冊什麼網域名稱的困擾 * </h2>
+                <div class="radio-container">
+                  <input type="radio" id="q2_match_1" name="recital_year" value="yes">
+                  <label for="q2_match_1"> 是</label>
+                </div>
+                <div class="radio-container">
+                  <input type="radio" id="q2_match_2" name="recital_year" value="no"> 
+                  <label for="q2_match_2"> 否</label>
+                </div>
+                <div class="error-message"> 請選擇選項 </div>
+              </div>
+
+              <div class="slide">
+                <h2> 您是否認為網域名稱與品牌保護相關？ * </h2>
+                <div class="radio-container">
+                  <input type="radio" id="q3_match_1" name="recorded" value="yes">
+                  <label for="q3_match_1"> 是</label>
+                </div>
+                <div class="radio-container">
+                  <input type="radio" id="q3_match_2" name="recorded" value="no"> 
+                  <label for="q3_match_2"> 否</label>
+                </div>
+                <div class="error-message"> 請選擇選項 </div>
+              </div>
+
+              <div class="slide">
+                <h2> 您是否有看過關於其他公司/品牌/商標被別人註冊而引起爭議的新聞？ * </h2>
+                <div class="radio-container">
+                  <input type="radio" id="q4_match_1" name="recorded" value="yes">
+                  <label for="q4_match_1"> 是</label>
+                </div>
+                <div class="radio-container">
+                  <input type="radio" id="q4_match_2" name="recorded" value="no"> 
+                  <label for="q4_match_2"> 否</label>
+                </div>
+                <div class="error-message"> 請選擇選項 </div>
+              </div>
+
+              <div class="slide">
+                <h2> 您是否認為品牌是貴司的重要資產？  * </h2>
+                <div class="radio-container">
+                  <input type="radio" id="q5_match_1" name="recorded" value="yes">
+                  <label for="q5_match_1"> 是</label>
+                </div>
+                <div class="radio-container">
+                  <input type="radio" id="q5_match_2" name="recorded" value="no"> 
+                  <label for="q5_match_2"> 否</label>
+                </div>
+                <div class="error-message"> 請選擇選項 </div>
+              </div>
+
+              <div class="slide">
+                <h2> 您是否認為品牌是貴司的重要資產？  * </h2>
+                <div class="radio-container">
+                  <input type="radio" id="q6_match_1" name="recorded" value="yes">
+                  <label for="q6_match_1"> 是</label>
+                </div>
+                <div class="radio-container">
+                  <input type="radio" id="q6_match_2" name="recorded" value="no"> 
+                  <label for="q6_match_2"> 否</label>
+                </div>
+                <div class="error-message"> 請選擇選項 </div>
+              </div>
+
+
+
+              <div class="slide">
+                <h2> 感謝您的耐心填答！ </h2>
+                <p>如果願意，歡迎留下您的聯絡資料，收到我們第一手的品牌保護消息！ </p>
+              </div>
+              <div class="slide">
+                <h2>您的會員帳號是？ </h2>
+                <input type="text" name="lead_account" placeholder="會員帳號" id="last_input">
+                <div class="error-message"> 請輸入您的會員帳號 </div>
+              </div>
+              <div class="slide">
+                <h2>您的聯絡信箱 </h2>
+                <input type="email" name="lead_email" placeholder="service@net-chinese.com.tw" id="last_input">
+                <div class="error-message"> 請輸入您的 email </div>
+              </div>
+              <div class="slide">
+                <h2>您的公司統編 </h2>
+                <input type="text" name="tax_id" placeholder="00000000" id="last_input">
+                <div class="error-message"> 請輸入您的公司統編 </div>
+              </div>
+            </div>
+          </form>
+            <div class="buttons-container">
+              <button class="btn-white btn-previous">上一題</button>
+              <button class="btn-white btn-next">下一題</button>
+              <button class="float-right btn-submit" disabled>Submit</button>
+            </div>
+
+          <img src="logo.png" alt="Logo" class="corner-logo">
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
