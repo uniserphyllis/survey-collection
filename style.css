@@ -2,7 +2,11 @@
   box-sizing:border-box;
 }
 body{
-  background: #ffffff;
+  /*background: #ffffff;*/
+  background-image: url('background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +23,8 @@ body{
   padding-bottom: 80px; /* 在底部預留空間，避免 logo 遮擋內容 */
   border-radius: 10px; /* 圓角，使卡片看起來更柔和 */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 卡片陰影 */
+  transform: scale(1.5); /* 1.2 表示放大 120% */
+  transform-origin: center; /* 設定縮放的基準點 */
 }
 
 .corner-logo {
@@ -31,6 +37,14 @@ body{
   pointer-events: none; /* 防止 logo 遮擋點擊 */
 }
 
+.copyright{
+  position: absolute;
+  bottom: 30px; /* 與底部的距離 */
+  left: 30px; /* 與右側的距離 */
+  font-size: 9px;
+  color: #999999;
+}
+
 .buttons-container{
   margin-top: 3em;
 }
@@ -39,8 +53,11 @@ button{
   padding: 1em 2em;
   width: 140px;
   text-align: center;
+  border-radius: 10px; /* 圓角，使卡片看起來更柔和 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* 卡片陰影 */
   &.btn-white{
     background: white;
+    border-color:#004B83;
   }
   &.btn-submit{
     background: black;
@@ -92,7 +109,7 @@ input[type="radio"]:checked + label {
 input[type='text'],input[type="email"]{
   border: 1px solid black;
   padding: 10px;
-  width: 100%;
+  width: 80%;
 }
 .btn-submit{
   display: none;
@@ -108,18 +125,18 @@ input[type='text'],input[type="email"]{
 }
 
 form#questionnaire-form{
-  height: 200px;
+  height: 250px;
   width: 100%;
   overflow: hidden;
 }
 .slide{
-  height: 200px;
+  height: 250px;
   width: 100%;
 }
 .slide h2{
   margin-top: 0;
 }
-}
+
 .form-container button,.form-container label{
   cursor: pointer;
 }
@@ -127,6 +144,7 @@ form#questionnaire-form{
 /* 複選題 */
 
 .checkbox-container {
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 7px;
@@ -147,7 +165,7 @@ input[type="checkbox"] + label {
 
 input[type="checkbox"] + label:before {
   content: "";
-  position: absolute;
+  position: absolute; 
   left: 0;
   top: 0;
   width: 20px;
@@ -160,6 +178,13 @@ input[type="checkbox"]:checked + label:before {
   background-color: black;
   border-color: black;
 }
+
+#other_text_input {
+  position: inline-block;
+  margin-left: 5px;
+  display: none;
+}
+
 
 .options-grid {
   display: grid;
