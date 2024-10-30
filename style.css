@@ -179,7 +179,7 @@ input[type="checkbox"]:checked + label:before {
   border-color: black;
 }
 
-#other_text_input {
+.other_text_input {
   position: inline-block;
   margin-left: 5px;
   display: none;

@@ -59,48 +59,40 @@ function validateForm(slideNumber) {
     let checkboxChecked = false;
     let otherInputRequired = false;
 
-    if (inputs.length === 0) {
-      // 如果沒有 input 視為通過
-      question_valid = true;
-    } else {
-      inputs.forEach(input => {
-        if (input.type === "radio") {
-          if (input.checked) {
-            radioChecked = true;
-          }
-        } else if (input.type === "checkbox") {
-          if (input.checked) {
-            checkboxChecked = true;
-          }
-          // 如果是 "其他" 選項的 checkbox，且被選中時，則要求填寫輸入框
-          if (input.id === "text_other" && input.checked) {
-            otherInputRequired = true;
-          }
-        } else if (input.type === "email") {
-          // 若為 email 欄位，進行格式驗證，未填寫則視為通過
-          if (input.value !== "" && !validateEmail(input.value)) {
-            question_valid = false;
-          }
-        } else if (input.type === "text") {
-          // 若為 text 欄位，且被要求填寫「其他」選項時，檢查是否有值
-          if (input.id === "other_text_input" && otherInputRequired && input.value.trim() === "") {
-            question_valid = false;
-          }
+    const otherIds = ['role_other', 'brand_other', 'com_real_bp_other']; // 定義多個「其他」選項的 ID
+
+    inputs.forEach(input => {
+      if (input.type === "radio") {
+        if (input.checked) {
+          radioChecked = true;
         }
-      });
-
-      // 如果這個問題包含 radio，確保至少有一個被選中
-      if (Array.from(inputs).some(input => input.type === "radio") && !radioChecked) {
-        question_valid = false;
+      } else if (input.type === "checkbox") {
+        if (input.checked) {
+          checkboxChecked = true;
+        }
+        // 檢查是否是「其他」選項的 checkbox，且被選中時要求填寫輸入框
+        if (otherIds.includes(input.id) && input.checked) {
+          otherInputRequired = true;
+        }
+      } else if (input.type === "email") {
+        if (input.value !== "" && !validateEmail(input.value)) {
+          question_valid = false;
+        }
+      } else if (input.type === "text") {
+        if (input.classList.contains("other_text_input") && otherInputRequired && input.value.trim() === "") {
+          question_valid = false;
+        }
       }
+    });
 
-      // 如果這個問題包含 checkbox，確保至少有一個被選中，且 "其他" 選項的輸入框若被選中時必須填寫
-      if (Array.from(inputs).some(input => input.type === "checkbox") && (!checkboxChecked || (otherInputRequired && !question.querySelector("#other_text_input").value.trim()))) {
-        question_valid = false;
-      }
+    if (Array.from(inputs).some(input => input.type === "radio") && !radioChecked) {
+      question_valid = false;
     }
 
-    // 若任何 question 未通過，將 form_valid 設為 false
+    if (Array.from(inputs).some(input => input.type === "checkbox") && (!checkboxChecked || (otherInputRequired && !question.querySelector(".other_text_input").value.trim()))) {
+      question_valid = false;
+    }
+
     if (!question_valid) {
       form_valid = false;
     }
@@ -108,6 +100,7 @@ function validateForm(slideNumber) {
 
   return form_valid;
 }
+
 
 // 驗證 email 格式
 function validateEmail(email) {
@@ -126,21 +119,18 @@ function hideError(slideNumber) {
   if (error) error.style.display = "none";
 }
 
-// 顯示或隱藏「其他」選項的輸入框
+/// 顯示或隱藏「其他」選項的輸入框
 document.addEventListener("DOMContentLoaded", () => {
-  const otherCheckbox = document.getElementById('text_other');
-  if (otherCheckbox) {
-    otherCheckbox.addEventListener('change', function() {
-      const otherInput = document.getElementById('other_text_input');
-      if (this.checked) {
-        otherInput.style.display = 'inline-block';
-      } else {
-        otherInput.style.display = 'none';
-        otherInput.value = '';
-      }
+  document.querySelectorAll('.text_other').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const otherInput = document.querySelector(`#${this.id}_input`);
+      otherInput.style.display = this.checked ? 'inline-block' : 'none';
+      if (!this.checked) otherInput.value = ''; // 清空輸入框
     });
-  }
+  });
 });
+
+
 
 // 最後一個輸入框控制提交按鈕狀態
 const lastInput = document.getElementById('lead_tax_id_input');
@@ -154,13 +144,22 @@ if (lastInput) {
 const submit = document.querySelector('.btn-submit');
 submit.addEventListener('click', function(e) {
   e.preventDefault();
+
   fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify([...new FormData($form)])
-  }).then(() => {
-    form.innerHTML = "<h2>Thank you! We have received your entry and will get back to you via the email provided.</h2>";
-  });
+  }).then(response => {
+    if (response.ok) {
+      // 顯示感謝填答訊息
+      form.innerHTML = "<h2>Thank you! We have received your entry and will get back to you via the email provided.</h2>";
+
+      // 2秒後跳轉到指定的頁面
+      setTimeout(() => {
+        window.location.href = "https://www.net-chinese.com.tw/nc/index.php/MenuLink/Index/AboutBrandProtection";
+      }, 2000);
+    } else {
+      alert("Submission failed. Please try again.");
+    }
+  }).catch(() => alert("Network error. Please check your connection."));
 });

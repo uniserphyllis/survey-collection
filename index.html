@@ -54,9 +54,9 @@
                         <label for="role_7">公司經營者／管理者</label>
                       </div>
                       <div class="checkbox-container">
-                        <input type="checkbox" id="text_other" name="text[]" value="other">
-                        <label for="text_other">其他</label>
-                        <input type="text" id="other_text_input" name="other_text" placeholder="請輸入" style="display: none; margin-left: 5px;">
+                        <input type="checkbox" id="role_other" class="text_other" name="text[]" value="other">
+                        <label for="role_other">其他</label>
+                        <input type="text" id="role_other_input" class="other_text_input" name="other_text" placeholder="請輸入" style="display: none; margin-left: 5px;">
                       </div>
                 </div>
                   <div class="error-message"> 請至少選擇/輸入一個選項 </div>
@@ -74,11 +74,10 @@
                     <input type="radio" id="q2_match_2" name="q2_what_dn" value="no"> 
                     <label for="q2_match_2"> 否</label>
                   </div>
-                </div> <!-- 關閉 question 的 div -->
+                </div>
               
                 <div style="height: 30px;"></div> <!-- 創造 30px 的空白行 -->
                 
-                <!-- 正確的 question 結構 -->
                 <div class="question" data-question="3">
                   <h2> 您是否認為網域名稱與品牌保護相關？ * </h2>
                   <div class="radio-container">
@@ -90,7 +89,7 @@
                     <label for="q3_match_2"> 否</label>
                   </div>
                   <div class="error-message"> 請選擇選項 </div>
-                </div> <!-- 正確關閉 question 的 div -->
+                </div>
               </div>
               
 
@@ -121,7 +120,6 @@
                 </div>
               </div>
 
-
               <div class="slide">
                 <div class="question" data-question="6">
                   <h2> 您期待客戶對貴司品牌的印象？ *  </h2>
@@ -139,11 +137,11 @@
                           <label for="brand_3">是個比較昂貴的品牌</label>
                       </div>
                       <div class="checkbox-container">
-                        <input type="checkbox" id="text_other" name="text[]" value="other">
-                        <label for="text_other">其他</label>
-                        <input type="text" id="other_text_input" name="other_text" placeholder="請輸入" style="display: none; margin-left: 5px;">
+                        <input type="checkbox" id="brand_other" class="text_other" name="text[]" value="other">
+                        <label for="brand_other">其他</label>
+                        <input type="text" id="brand_other_input" class="other_text_input" name="other_text" placeholder="請輸入" style="display: none; margin-left: 5px;">
                       </div>
-                </div>
+                    </div>
                   <div class="error-message"> 請至少選擇/輸入一個選項 </div>
                 </div>
               </div>
@@ -192,13 +190,13 @@
                           <label for="com_real_bp_3">曾規劃也重視，可是不確定是否周全</label>
                       </div>
                       <div class="checkbox-container">
-                        <input type="checkbox" id="com_real_bp_4" name="com_real_bp[]" value="expensive">
-                        <label for="com_real_bp_4">認為品牌不需要保護</label>
+                          <input type="checkbox" id="com_real_bp_4" name="com_real_bp[]" value="expensive">
+                          <label for="com_real_bp_4">認為品牌不需要保護</label>
                       </div>
                       <div class="checkbox-container">
-                        <input type="checkbox" id="text_other" name="text[]" value="other">
-                        <label for="text_other">其他</label>
-                        <input type="text" id="other_text_input" name="other_text" placeholder="請輸入" style="display: none; margin-left: 5px;">
+                          <input type="checkbox" id="com_real_bp_other" class="text_other" name="text[]" value="other">
+                          <label for="com_real_bp_other">其他</label>
+                          <input type="text" id="com_real_bp_other_input" class="other_text_input" name="other_text" placeholder="請輸入" style="display: none; margin-left: 5px;">
                       </div>
                   <div class="error-message"> 請至少選擇/輸入一個選項 </div>
                 </div>
